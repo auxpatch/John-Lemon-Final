@@ -1,10 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class CountDownTimer : MonoBehaviour
 {
     int countDownStartValue = 5;
+    public Text timerUI;
 
     // Start is called before the first frame update
     void Start()
@@ -16,13 +18,13 @@ public class CountDownTimer : MonoBehaviour
     {
         if (countDownStartValue > 0)
         {
-            Debug.Log("Timer : " + countDownStartValue);
+            timerUI.text = "Timer : " + countDownStartValue;
             countDownStartValue--;
             Invoke("countDownTimer", 1f);
         }
         else
         {
-            Debug.Log("GameOver!");
+            timerUI.text = "GameOver!";
         }
     }
 
