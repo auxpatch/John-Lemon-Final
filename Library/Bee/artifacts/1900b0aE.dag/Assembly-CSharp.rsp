@@ -416,6 +416,7 @@
 "Assets/TextMesh Pro/Examples & Extras/Scripts/WarpTextExample.cs"
 "Assets/UnityTechnologies/Scripts/CountDownTimer.cs"
 "Assets/UnityTechnologies/Scripts/GameEnding.cs"
+"Assets/UnityTechnologies/Scripts/GameManagerScript.cs"
 "Assets/UnityTechnologies/Scripts/GameOverScreen.cs"
 "Assets/UnityTechnologies/Scripts/LightFlicker.cs"
 "Assets/UnityTechnologies/Scripts/Observer.cs"
