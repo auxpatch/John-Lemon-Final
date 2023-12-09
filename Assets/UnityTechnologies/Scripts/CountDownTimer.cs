@@ -7,8 +7,11 @@ using UnityEngine.UI;
 public class CountDownTimer : MonoBehaviour
 {
     int countDownStartValue = 70;
+
     public Text timerUI;
     public GameManagerScript gameManager;
+    public GameObject johnLemon;
+
     private bool isOver;
 
     // Start is called before the first frame update
@@ -29,6 +32,7 @@ public class CountDownTimer : MonoBehaviour
         else if(countDownStartValue <= 0 && !isOver)
         {
             isOver = true;
+            Destroy(johnLemon);
             gameManager.gameOver();
             timerUI.text = "GameOver!";
         }

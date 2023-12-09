@@ -6,8 +6,11 @@ using UnityEngine.InputSystem;
 public class PlayerMovement : MonoBehaviour
 {
     public InputAction MoveAction;
-    
+    public InputAction DashAction;
+
     public float turnSpeed = 20f;
+    public float dashDistance = 0.2f;
+    public float dashDuration = 0.1f;
 
     Animator m_Animator;
     Rigidbody m_Rigidbody;
@@ -22,6 +25,27 @@ public class PlayerMovement : MonoBehaviour
         m_AudioSource = GetComponent<AudioSource> ();
         
         MoveAction.Enable();
+        DashAction.Enable();
+    }
+
+    void Update()
+    {
+        if (DashAction.triggered)
+        {
+            StartCoroutine(Dash());
+        }
+    }
+
+    IEnumerator Dash()
+    {
+        float startTime = Time.time;
+        Vector3 dashDirection = transform.forward;
+
+        while (Time.time - startTime < dashDuration)
+        {
+            m_Rigidbody.MovePosition(m_Rigidbody.position + dashDirection * dashDistance * Time.deltaTime / dashDuration);
+            yield return null;
+        }
     }
 
     void FixedUpdate ()

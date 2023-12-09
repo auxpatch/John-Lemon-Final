@@ -3,7 +3,11 @@ guid: 1883d3a7a1b9a9a4483c2ecc7c8289a8
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - timerUI: {instanceID: 0}
+  - gameManager: {instanceID: 0}
+  - johnLemon: {fileID: 6077229646317852079, guid: e58a8494f35e17f45ba5bbffdfb92517,
+      type: 3}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 
