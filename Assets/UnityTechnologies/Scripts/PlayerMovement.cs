@@ -11,12 +11,14 @@ public class PlayerMovement : MonoBehaviour
     public float turnSpeed = 20f;
     public float dashDistance = 0.2f;
     public float dashDuration = 0.1f;
+    public float dashCooldown = 3f;
 
     Animator m_Animator;
     Rigidbody m_Rigidbody;
     AudioSource m_AudioSource;
     Vector3 m_Movement;
     Quaternion m_Rotation = Quaternion.identity;
+    bool canDash = true;
 
     void Start ()
     {
@@ -30,7 +32,7 @@ public class PlayerMovement : MonoBehaviour
 
     void Update()
     {
-        if (DashAction.triggered)
+        if (DashAction.triggered && canDash)
         {
             StartCoroutine(Dash());
         }
@@ -38,6 +40,8 @@ public class PlayerMovement : MonoBehaviour
 
     IEnumerator Dash()
     {
+        canDash = false;
+
         float startTime = Time.time;
         Vector3 dashDirection = transform.forward;
 
@@ -46,6 +50,9 @@ public class PlayerMovement : MonoBehaviour
             m_Rigidbody.MovePosition(m_Rigidbody.position + dashDirection * dashDistance * Time.deltaTime / dashDuration);
             yield return null;
         }
+
+        yield return new WaitForSeconds(dashCooldown);
+        canDash = true;
     }
 
     void FixedUpdate ()
